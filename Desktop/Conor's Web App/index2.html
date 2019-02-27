@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="../public/StyleSheets/CSS.css">
+
+
+
+    <link rel="shortcut icon" sizes="128x128" href="app_icon128.png">
+    <link rel="shortcut icon" sizes="196x196" href="app_icon196.png">
+    <link rel="apple-touch-icon" href="app_icon60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="app_icon76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="app_icon120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="app_icon152.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <nav class="navbar">
+            <div class="row">
+                <button class="btn-dark col-2" onclick="showGamesDiv()"><i class="far fa-futbol"></i></button>
+                <button class="btn-dark col-2" onclick="showTeamsDiv()"><i class="fas fa-tshirt"></i></button>
+                <button class="btn-dark col-4" onclick="showHomeDiv()"><i class="fa fa-home"></i> </button>
+                <button class="btn-dark col-2" onclick="showSignInDiv()"><i class="fas fa-sign-in-alt"></i></button>
+                <button class="btn-dark col-2" onclick="showContactDiv()"><i class="fas fa-at"></i></button>
+            </div>
+        </nav>
+        
+        <img src="nysl_logo.png" alt="logo" id="logo">
+
+        <div class="collapse" id="homePage">
+            <h2>Up comeing events</h2>
+            <div>
+                <p>a list of up coming events</p>
+            </div>
+            <h2>August 4</h2>
+            <p class="indent">NYSL Fundraiser</p>
+
+            <h2>August 16</h2>
+            <p class="indent">Season Kick-off: Meet the Teams</p>
+
+            <h2>September 1</h2>
+            <p class="indent"> First Game of the Season (Check Game Schedule for details)</p>
+        </div>
+
+
+
+
+
+
+
+        <!--        div for the gmaes page-->
+
+
+        <div class="gamesDiv collapse" id="gamesPage">
+
+
+
+
+
+
+
+            <h2>Up coming games</h2>
+            <p>Information about games and shit like that!</p>
+            <div>
+                <p>
+
+                    a div full of incon links about games you click on the icon and it leads you to a page about the game. This page will give you information about the location, time and opposition
+                </p>
+            </div>
+            <div class="flexy_box" id="gamePages2">
+                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonOne">
+
+                    Team 1 vs Team 2
+
+                </button>
+                <div class="card card-body collapse" id="teamButtonOne" data-parent="#gamePages2">
+                    <h3>Time</h3>
+                    <p>09:30</p>
+
+                    <h3>location</h3>
+
+
+                    <h4>AJ Katzenmaier Elementary</h4>
+                    <div class="mapChild">
+
+                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.7810520615835!2d-87.86492878454477!3d42.32586847918918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880f932fbc6ba7cd%3A0xcf2bbe275c6da815!2sA+J+Katzenmaier+Elementary+School!5e0!3m2!1sen!2ses!4v1548165740775"></iframe>
+                    </div>
+                    <p></p>
+                </div>
+                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonTwo">
+
+                    Team 3 vs Team 4
+
+                </button>
+                <div class="card card-body collapse" id="teamButtonTwo" data-parent="#gamePages2">
+                    <h3>Time</h3>
+                    <p>09:30</p>
+                    <h3>location</h3>
+                    <h4>Greenbay Elementary</h4>
+                    <div>
+                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0258843688616!2d-87.64002798455778!3d41.91380227921926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34073f306a3%3A0x9e1726bbf8f23f0e!2s1734+N+Orleans+St%2C+Chicago%2C+IL+60614%2C+EE.+UU.!5e0!3m2!1ses!2ses!4v1548166283858"></iframe>
+                    </div>
+
+
+                </div>
+                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonThree">
+
+                    Team 1 vs Team 4
+
+                </button>
+                <div class="card card-body collapse" id="teamButtonThree" data-parent="#gamePages2">
+                    <h3>Time</h3>
+                    <p>09:30</p>
+
+                    <h3>location</h3>
+                    <h4>Howard A Yeager Elementary</h4>
+                    <div>
+                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.585683085616!2d-87.66511458455746!3d41.92326457921871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd2e37f9b8d2d%3A0x62ad8b907dd755d6!2s2245+N+Southport+Ave%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1548166354437"></iframe>
+                    </div>
+
+                </div>
+                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonFour">
+                    Team 2 vs Team 3
+                </button>
+                <div class="card card-body collapse" id="teamButtonFour" data-parent="#gamePages2">
+                    <h3>Time</h3>
+                    <p>09:30</p>
+
+                    <h3>location</h3>
+                    <h4><a id="MarjoriePHartElementary">Marjorie P Hart Elementary</a></h4>
+                    <div>
+                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11798.881242377356!2d-87.84569!3d42.3271639!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9a4d5f9aafd42e02!2sMarjorie+P+Hart+Elementary+School!5e0!3m2!1ses!2ses!4v1548166416106"></iframe>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!--    div for teams-->
+        <div class="teamsDiv collapse " id="teamsPage">
+            <div>
+                <h2>The Teams and results tables</h2>
+                <div>
+                    <p>This div should have information about the leauge and how other teams are doing their results and shit like that!
+                    </p>
+                    <p>You should be able to click on different leauges and see results tables</p>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+
+                            <button><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/DFBEagle.svg/800px-DFBEagle.svg.png" height="100" alt="logo">Team 1</button>
+
+                            <!--                            <p>Position, Games played, Won, Drawn, Lost, GF, GA GD Points</p>-->
+
+
+                            <p>Up coming games</p>
+
+                            <button><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/DFBEagle.svg/800px-DFBEagle.svg.png" height="100" alt="logo">Team 2</button>
+
+                            <button><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/DFBEagle.svg/800px-DFBEagle.svg.png" height="100" alt="logo">Team 3</button>
+
+                            <button><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/DFBEagle.svg/800px-DFBEagle.svg.png" height="100" alt="logo">Team 4</button>
+
+                            <button><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/DFBEagle.svg/800px-DFBEagle.svg.png" height="100" alt="logo">Team 5</button>
+
+                            <button><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/DFBEagle.svg/800px-DFBEagle.svg.png" height="100" alt="logo">Team 6</button>
+
+                        </div>
+                        <div class="col">A Leauge table</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        div for sign_in-->
+
+        <div class="signInDiv collapse" id="signInPage">
+            <div>
+                <h2>Sign in</h2>
+                <p>This shoule be a plain google log in thing that leads you to a different page</p>
+
+
+            </div>
+        </div>
+
+        <!--div for contact-->
+        <div class="contactDiv collapse" id="contactPage">
+            <div class="container">
+                <div class="col center">
+                    <h2>Contact</h2>
+                    <p>This should just be a plain page with the contact details and a link to the main websight nothing more</p>
+
+                    <p>Please email us at
+                        <a href="mailto:nysl@chisoccer.org?subject=Hello%20&body=How%20are%20you?">nysl@chisoccer</a> </p>
+
+
+                    <p>We will reply to your email as soon as we can.</p>
+
+                    <div>
+                        <b>Email:</b><a href="mailto:nysl@chisoccer.org?subject=Hello%20Michael&body=How%20are%20you?">michael.randall@chisoccer.org</a>
+                        <p> <a href="tel://+16306908132">Phone: (630) 690-8132</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="javaScript.js"></script>
+
+</body>
+
+</html>
