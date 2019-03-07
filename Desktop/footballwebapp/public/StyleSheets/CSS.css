@@ -1,0 +1,56 @@
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 15px;
+    margin: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 150px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+ul {
+    list-style-type: none;
+    padding: none;
+}
+.flexy_box{
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+}
+li{
+    margin-top: 2px;
+}
+
+.center{
+    text-align: center;
+}
+
+body{
+    background:#4d4f543c;
+}
+.navbar{
+    justify-content: center;
+}
+
+body{
+    text-align: center;
+    height: 100vh;
+}
+.btn-dark{
+    font-size: 30px;
+/*
+    margin-left: 1px;
+    margin-right: 1px;
+*/
+/*
+    padding-left: 1px;
+    padding-right: 1px;
+*/
+
+}
