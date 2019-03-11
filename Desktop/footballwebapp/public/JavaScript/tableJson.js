@@ -1,935 +1,264 @@
+  
+
 var app = new Vue({
-            el: "#app",
-            data: {
+                el: "#app",
+                data: {
+                    "table": [],
+                    "name": [],
+                    "view": "home",
+                    "playedGames": [],
+                    "futureGames": [],
+                    "maps": [],
+                    clubs: data.clubs,
+                    fixtures: data.season_fixtures,
+                },
+                methods: {
 
-                "clubs": [{
-                        "id": 1,
-                        "name": "Arsenal",
-                        "short_name": "Arsenal",
-                        "club_code": "ARS",
-                        "stadium": "Emirates Stadium",
-                        "capacity": 59867,
-                        "manager": "Unai Emery",
-                        "manager_nationality": "Spain",
-                        "position": 4,
-                        "last_week_position": 4,
-                        "games_played": 27,
-                        "home_games_played": 14,
-                        "away_games_played": 13,
-                        "wins": 16,
-                        "home_wins": 11,
-                        "away_wins": 5,
-                        "draws": 5,
-                        "home_draws": 2,
-                        "away_draws": 3,
-                        "losses": 6,
-                        "home_losses": 1,
-                        "away_losses": 5,
-                        "goals_scored": 55,
-                        "home_goals_scored": 30,
-                        "away_goals_scored": 25,
-                        "goals_conceded": 37,
-                        "home_goals_conceded": 11,
-                        "away_goals_conceded": 26,
-                        "goals_difference": 18,
-                        "points": 53,
-                        "home_points": 35,
-                        "away_points": 18,
-                        "next_fixture": "BOU-(H)",
-                        "previous_fixtures": ["MCI-(H)", "CHE-(A)", "WHU-(H)", "CAR-(A)", "NEW-(A)", "EVE-(H)", "WAT-(H)", "FUL-(A)", "LEI-(H)", "CRY-(H)", "LIV-(H)", "WOL-(H)", "BOU-(A)", "TOT-(H)", "MUN-(A)", "HUD-(H)", "SOU-(A)", "BUR-(H)", "BHA-(A)", "LIV-(A)", "FUL-(H)", "WHU-(A)", "CHE-(H)", "CAR-(H)", "MCI-(A)", "HUD-(A)", "SOU-(H)"],
-                        "results": ["0-2", "3-2", "3-1", "2-3", "1-2", "2-0", "2-0", "1-5", "3-1", "2-2", "1-1", "1-1", "1-2", "4-2", "2-2", "1-0", "3-2", "3-1", "1-1", "5-1", "4-1", "1-0", "2-0", "2-1", "3-1", "1-2", "2-0"],
-                        "form": ["L", "L", "W", "W", "W", "W", "W", "W", "W", "D", "D", "D", "W", "W", "D", "W", "L", "W", "D", "L", "W", "L", "W", "W", "L", "W", "W"]
-    },
-                    {
-                        "id": 2,
-                        "name": "Bournemouth",
-                        "short_name": "Bournemouth",
-                        "club_code": "BOU",
-                        "stadium": "Vitality Stadium",
-                        "capacity": 11360,
-                        "manager": "Eddie Howe",
-                        "manager_nationality": "England",
-                        "position": 12,
-                        "last_week_position": 10,
-                        "games_played": 27,
-                        "home_games_played": 14,
-                        "away_games_played": 13,
-                        "wins": 10,
-                        "home_wins": 7,
-                        "away_wins": 3,
-                        "draws": 4,
-                        "home_draws": 4,
-                        "away_draws": 0,
-                        "losses": 13,
-                        "home_losses": 3,
-                        "away_losses": 10,
-                        "goals_scored": 38,
-                        "home_goals_scored": 26,
-                        "away_goals_scored": 12,
-                        "goals_conceded": 48,
-                        "home_goals_conceded": 18,
-                        "away_goals_conceded": 30,
-                        "goals_difference": -10,
-                        "points": 34,
-                        "home_points": 25,
-                        "away_points": 9,
-                        "next_fixture": "ARS-(A)",
-                        "previous_fixtures": ["CAR-(H)", "WHU-(A)", "EVE-(H)", "CHE-(A)", "LEI-(H)", "BUR-(A)", "CRY-(H)", "WAT-(A)", "SOU-(H)", "FUL-(A)", "MUN-(H)", "NEW-(A)", "ARS-(H)", "MCI-(A)", "HUD-(H)", "LIV-(H)", "WOL-(A)", "BHA-(H)", "TOT-(A)", "MUN-(A)", "WAT-(H)", "EVE-(A)", "WHU-(H)", "CHE-(H)", "CAR-(A)", "LIV-(A)", "WOL-(H)"],
-                        "results": ["2-0", "1-2", "2-2", "2-0", "4-2", "4-0", "2-1", "4-0", "0-0", "0-3", "1-2", "2-1", "1-2", "3-1", "2-1", "0-4", "2-0", "2-0", "5-0", "4-1", "3-3", "2-0", "2-0", "4-0", "2-0", "3-0", "1-1"],
-                        "form": ["W", "W", "D", "L", "W", "L", "W", "W", "D", "W", "L", "L", "L", "L", "W", "L", "L", "W", "L", "L", "D", "L", "W", "W", "L", "L", "D"]
-    },
-                    {
-                        "id": 3,
-                        "name": "Brighton and Hove Albion",
-                        "short_name": "Brighton",
-                        "club_code": "BHA",
-                        "stadium": "Amex Stadium",
-                        "capacity": 30750,
-                        "manager": "Chris Hughton",
-                        "manager_nationality": "Ireland",
-                        "position": 16,
-                        "last_week_position": 16,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 7,
-                        "home_wins": 5,
-                        "away_wins": 2,
-                        "draws": 6,
-                        "home_draws": 4,
-                        "away_draws": 2,
-                        "losses": 14,
-                        "home_losses": 4,
-                        "away_losses": 10,
-                        "goals_scored": 29,
-                        "home_goals_scored": 16,
-                        "away_goals_scored": 13,
-                        "goals_conceded": 41,
-                        "home_goals_conceded": 15,
-                        "away_goals_conceded": 26,
-                        "goals_difference": -12,
-                        "points": 27,
-                        "home_points": 19,
-                        "away_points": 8,
-                        "next_fixture": "HUD-(H)",
-                        "previous_fixtures": ["WAT-(A)", "MUN-(H)", "LIV-(A)", "FUL-(H)", "SOU-(A)", "TOT-(H)", "MCI-(A)", "WHU-(H)", "NEW-(A)", "WOL-(H)", "EVE-(A)", "CAR-(A)", "LEI-(H)", "HUD-(A)", "CRY-(H)", "BUR-(A)", "CHE-(H)", "BOU-(A)", "ARS-(H)", "EVE-(H)", "WHU-(A)", "LIV-(H)", "MUN-(A)", "FUL-(A)", "WAT-(H)", "BUR-(H)", "LEI-(A)"],
-                        "results": ["2-0", "3-2", "1-0", "2-2", "2-2", "1-2", "2-0", "1-0", "0-1", "1-0", "3-1", "2-1", "1-1", "1-2", "3-1", "1-0", "1-2", "2-0", "1-1", "1-0", "2-2", "0-1", "2-1", "4-2", "0-0", "1-3", "2-1"],
-                        "form": ["L", "W", "L", "D", "D", "L", "L", "W", "W", "W", "L", "L", "D", "W", "W", "L", "L", "L", "D", "W", "D", "L", "L", "L", "D", "L", "L"]
-    },
-                    {
-                        "id": 4,
-                        "name": "Burnley",
-                        "short_name": "Burnley",
-                        "club_code": "BUR",
-                        "stadium": "Turf Moor",
-                        "capacity": 21944,
-                        "manager": "Sean Dyche",
-                        "manager_nationality": "England",
-                        "position": 15,
-                        "last_week_position": 14,
-                        "games_played": 28,
-                        "home_games_played": 13,
-                        "away_games_played": 15,
-                        "wins": 8,
-                        "home_wins": 5,
-                        "away_wins": 3,
-                        "draws": 6,
-                        "home_draws": 2,
-                        "away_draws": 4,
-                        "losses": 14,
-                        "home_losses": 6,
-                        "away_losses": 8,
-                        "goals_scored": 31,
-                        "home_goals_scored": 17,
-                        "away_goals_scored": 14,
-                        "goals_conceded": 50,
-                        "home_goals_conceded": 23,
-                        "away_goals_conceded": 27,
-                        "goals_difference": -19,
-                        "points": 30,
-                        "home_points": 17,
-                        "away_points": 13,
-                        "next_fixture": "CRY-(H)",
-                        "previous_fixtures": ["SOU-(A)", "WAT-(H)", "FUL-(A)", "MUN-(H)", "WOL-(A)", "BOU-(H)", "CAR-(A)", "HUD-(H)", "MCI-(A)", "CHE-(H)", "WHU-(A)", "LEI-(A)", "NEW-(H)", "CRY-(A)", "LIV-(H)", "BHA-(H)", "TOT-(A)", "ARS-(A)", "EVE-(H)", "WHU-(H)", "HUD-(A)", "FUL-(H)", "WAT-(A)", "MUN-(A)", "SOU-(H)", "BHA-(A)", "TOT-(H)", "NEW-(A)"],
-                        "results": ["0-0", "1-3", "4-2", "0-2", "1-0", "4-0", "1-2", "1-1", "5-0", "0-4", "4-2", "0-0", "1-2", "2-0", "1-3", "1-0", "0-1", "3-1", "1-5", "2-0", "1-2", "2-1", "0-0", "2-2", "1-1", "1-3", "2-1", "2-0"],
-                        "form": ["D", "L", "L", "L", "L", "W", "W", "D", "L", "L", "L", "D", "L", "L", "L", "W", "L", "L", "L", "W", "W", "W", "D", "D", "D", "W", "W", "L"]
-    },
-                    {
-                        "id": 5,
-                        "name": "Cardiff City",
-                        "short_name": "Cardiff",
-                        "club_code": "CAR",
-                        "stadium": "Cardiff City Stadium",
-                        "capacity": 33316,
-                        "manager": "Neil Warnock",
-                        "manager_nationality": "England",
-                        "position": 17,
-                        "last_week_position": 17,
-                        "games_played": 28,
-                        "home_games_played": 15,
-                        "away_games_played": 13,
-                        "wins": 7,
-                        "home_wins": 5,
-                        "away_wins": 2,
-                        "draws": 4,
-                        "home_draws": 2,
-                        "away_draws": 2,
-                        "losses": 17,
-                        "home_losses": 8,
-                        "away_losses": 9,
-                        "goals_scored": 25,
-                        "home_goals_scored": 16,
-                        "away_goals_scored": 9,
-                        "goals_conceded": 55,
-                        "home_goals_conceded": 31,
-                        "away_goals_conceded": 24,
-                        "goals_difference": -30,
-                        "points": 25,
-                        "home_points": 17,
-                        "away_points": 8,
-                        "next_fixture": "WOL-(A)",
-                        "previous_fixtures": ["BOU-(A)", "NEW-(H)", "HUD-(A)", "ARS-(H)", "CHE-(A)", "MCI-(H)", "BUR-(H)", "TOT-(A)", "FUL-(H)", "LIV-(A)", "LEI-(H)", "BHA-(H)", "EVE-(A)", "WOL-(H)", "WHU-(A)", "SOU-(H)", "WAT-(A)", "MUN-(H)", "CRY-(A)", "LEI-(A)", "TOT-(H)", "HUD-(H)", "NEW-(A)", "ARS-(A)", "BOU-(H)", "SOU-(A)", "WAT-(H)", "EVE-(H)"],
-                        "results": ["2-0", "0-0", "0-0", "2-3", "4-1", "0-5", "1-2", "1-0", "4-2", "4-1", "0-1", "2-1", "1-0", "2-1", "3-1", "1-0", "3-2", "1-5", "0-0", "0-1", "0-3", "0-0", "3-0", "2-1", "2-0", "1-2", "1-5", "0-3"],
-                        "form": ["L", "D", "D", "L", "L", "L", "L", "L", "W", "L", "L", "W", "L", "W", "L", "W", "L", "L", "D", "W", "L", "D", "L", "L", "W", "W", "L", "L"]
-    },
-                    {
-                        "id": 6,
-                        "name": "Chelsea",
-                        "short_name": "Chelsea",
-                        "club_code": "CHE",
-                        "stadium": "Stamford Bridge",
-                        "capacity": 41631,
-                        "manager": "Maurizio Sarri",
-                        "manager_nationality": "Italy",
-                        "position": 6,
-                        "last_week_position": 6,
-                        "games_played": 26,
-                        "home_games_played": 13,
-                        "away_games_played": 13,
-                        "wins": 15,
-                        "home_wins": 8,
-                        "away_wins": 7,
-                        "draws": 5,
-                        "home_draws": 4,
-                        "away_draws": 1,
-                        "losses": 6,
-                        "home_losses": 1,
-                        "away_losses": 5,
-                        "goals_scored": 45,
-                        "home_goals_scored": 26,
-                        "away_goals_scored": 19,
-                        "goals_conceded": 29,
-                        "home_goals_conceded": 9,
-                        "away_goals_conceded": 20,
-                        "goals_difference": 16,
-                        "points": 50,
-                        "home_points": 28,
-                        "away_points": 22,
-                        "next_fixture": "TOT-(H)",
-                        "previous_fixtures": ["HUD-(A)", "ARS-(H)", "NEW-(A)", "BOU-(H)", "CAR-(H)", "WHU-(A)", "LIV-(H)", "SOU-(A)", "MUN-(H)", "BUR-(A)", "CRY-(H)", "EVE-(H)", "TOT-(A)", "FUL-(H)", "WOL-(A)", "MCI-(H)", "BHA-(A)", "LEI-(H)", "WAT-(A)", "CRY-(A)", "SOU-(H)", "NEW-(H)", "ARS-(A)", "BOU-(A)", "HUD-(H)", "MCI-(A)"],
-                        "results": ["0-3", "3-2", "1-2", "2-0", "4-1", "0-0", "1-1", "0-3", "2-2", "0-4", "3-1", "0-0", "3-1", "2-0", "2-1", "2-0", "1-2", "0-1", "1-2", "0-1", "0-0", "2-1", "2-0", "4-0", "5-0", "6-0"],
-                        "form": ["W", "W", "W", "W", "W", "D", "D", "W", "D", "W", "W", "D", "L", "W", "L", "W", "W", "L", "W", "W", "D", "W", "L", "L", "W", "L"]
-    },
-                    {
-                        "id": 7,
-                        "name": "Crystal Palace",
-                        "short_name": "C Palace",
-                        "club_code": "CRY",
-                        "stadium": "Selhurst Park",
-                        "capacity": 25456,
-                        "manager": "Roy Hodgson",
-                        "manager_nationality": "England",
-                        "position": 14,
-                        "last_week_position": 13,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 8,
-                        "home_wins": 3,
-                        "away_wins": 5,
-                        "draws": 6,
-                        "home_draws": 4,
-                        "away_draws": 2,
-                        "losses": 13,
-                        "home_losses": 6,
-                        "away_losses": 7,
-                        "goals_scored": 31,
-                        "home_goals_scored": 9,
-                        "away_goals_scored": 22,
-                        "goals_conceded": 35,
-                        "home_goals_conceded": 12,
-                        "away_goals_conceded": 23,
-                        "goals_difference": -4,
-                        "points": 30,
-                        "home_points": 13,
-                        "away_points": 17,
-                        "next_fixture": "MUN-(H)",
-                        "previous_fixtures": ["FUL-(A)", "LIV-(H)", "WAT-(A)", "SOU-(H)", "HUD-(A)", "NEW-(H)", "BOU-(A)", "WOL-(H)", "EVE-(A)", "ARS-(H)", "CHE-(A)", "TOT-(H)", "MUN-(A)", "BUR-(H)", "BHA-(A)", "WHU-(A)", "LEI-(H)", "MCI-(A)", "CAR-(H)", "CHE-(H)", "WOL-(A)", "WAT-(H)", "LIV-(A)", "SOU-(A)", "FUL-(H)", "WHU-(H)", "LEI-(A)"],
-                        "results": ["0-2", "0-2", "2-1", "0-2", "0-1", "0-0", "2-1", "0-1", "2-0", "2-2", "3-1", "0-1", "0-0", "2-0", "3-1", "3-2", "1-0", "2-3", "0-0", "0-1", "0-2", "1-2", "4-3", "1-1", "2-0", "1-1", "1-4"],
-                        "form": ["W", "L", "L", "L", "W", "D", "L", "L", "L", "D", "L", "L", "D", "W", "L", "L", "W", "W", "D", "L", "W", "L", "L", "D", "W", "D", "W"]
-    },
-                    {
-                        "id": 8,
-                        "name": "Everton",
-                        "short_name": "Everton",
-                        "club_code": "EVE",
-                        "stadium": "Goodison Park",
-                        "capacity": 39572,
-                        "manager": "Marco Silva",
-                        "manager_nationality": "Portugal",
-                        "position": 9,
-                        "last_week_position": 11,
-                        "games_played": 28,
-                        "home_games_played": 14,
-                        "away_games_played": 14,
-                        "wins": 10,
-                        "home_wins": 6,
-                        "away_wins": 4,
-                        "draws": 6,
-                        "home_draws": 3,
-                        "away_draws": 3,
-                        "losses": 12,
-                        "home_losses": 5,
-                        "away_losses": 7,
-                        "goals_scored": 39,
-                        "home_goals_scored": 21,
-                        "away_goals_scored": 18,
-                        "goals_conceded": 39,
-                        "home_goals_conceded": 21,
-                        "away_goals_conceded": 18,
-                        "goals_difference": 0,
-                        "points": 36,
-                        "home_points": 21,
-                        "away_points": 15,
-                        "next_fixture": "LIV-(H)",
-                        "previous_fixtures": ["WOL-(A)", "SOU-(H)", "BOU-(A)", "HUD-(H)", "WHU-(H)", "ARS-(A)", "FUL-(H)", "LEI-(A)", "CRY-(H)", "MUN-(A)", "BHA-(H)", "CHE-(A)", "CAR-(H)", "LIV-(A)", "NEW-(H)", "WAT-(H)", "MCI-(A)", "TOT-(H)", "BUR-(A)", "BHA-(A)", "LEI-(H)", "BOU-(H)", "SOU-(A)", "HUD-(A)", "WOL-(H)", "MCI-(H)", "WAT-(A)", "CAR-(A)"],
-                        "results": ["2-2", "2-1", "2-2", "1-1", "1-3", "2-0", "3-0", "1-2", "2-0", "2-1", "3-1", "0-0", "1-0", "1-0", "1-1", "2-2", "3-1", "2-6", "1-5", "1-0", "0-1", "2-0", "2-1", "0-1", "1-3", "0-2", "1-0", "0-3"],
-                        "form": ["D", "W", "D", "D", "L", "L", "W", "W", "W", "L", "W", "D", "W", "L", "D", "D", "L", "L", "W", "L", "L", "W", "L", "W", "L", "L", "L", "W"]
-    },
-                    {
-                        "id": 9,
-                        "name": "Fulham",
-                        "short_name": "Fulham",
-                        "club_code": "FUL",
-                        "stadium": "Craven Cottage",
-                        "capacity": 25700,
-                        "manager": "Claudio Ranieri",
-                        "manager_nationality": "Italy",
-                        "position": 19,
-                        "last_week_position": 19,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 4,
-                        "home_wins": 4,
-                        "away_wins": 0,
-                        "draws": 5,
-                        "home_draws": 3,
-                        "away_draws": 2,
-                        "losses": 18,
-                        "home_losses": 6,
-                        "away_losses": 12,
-                        "goals_scored": 26,
-                        "home_goals_scored": 17,
-                        "away_goals_scored": 9,
-                        "goals_conceded": 61,
-                        "home_goals_conceded": 26,
-                        "away_goals_conceded": 35,
-                        "goals_difference": -35,
-                        "points": 17,
-                        "home_points": 15,
-                        "away_points": 2,
-                        "next_fixture": "SOU-(A)",
-                        "previous_fixtures": ["CRY-(H)", "TOT-(A)", "BUR-(H)", "BHA-(A)", "MCI-(A)", "WAT-(H)", "EVE-(A)", "ARS-(H)", "CAR-(A)", "BOU-(H)", "HUD-(A)", "LIV-(A)", "SOU-(H)", "CHE-(A)", "LEI-(H)", "MUN-(A)", "WHU-(H)", "NEW-(A)", "WOL-(H)", "HUD-(H)", "ARS-(A)", "BUR-(A)", "TOT-(H)", "BHA-(H)", "CRY-(A)", "MUN-(H)", "WHU-(A)"],
-                        "results": ["0-2", "3-1", "4-2", "2-2", "3-0", "1-1", "3-0", "1-5", "4-2", "0-3", "1-0", "2-0", "3-2", "2-0", "1-1", "4-1", "0-2", "0-0", "1-1", "1-0", "4-1", "2-1", "1-2", "4-2", "2-0", "0-3", "3-1"],
-                        "form": ["L", "L", "W", "D", "L", "D", "L", "L", "L", "L", "L", "L", "W", "L", "D", "L", "L", "D", "D", "W", "L", "L", "L", "W", "L", "L", "L"]
-    },
-                    {
-                        "id": 10,
-                        "name": "Huddersfield Town",
-                        "short_name": "Huddersfield",
-                        "club_code": "HUD",
-                        "stadium": "John Smith's Stadium",
-                        "capacity": 24121,
-                        "manager": "Jan Siewert",
-                        "manager_nationality": "Germany",
-                        "position": 20,
-                        "last_week_position": 20,
-                        "games_played": 28,
-                        "home_games_played": 15,
-                        "away_games_played": 13,
-                        "wins": 3,
-                        "home_wins": 2,
-                        "away_wins": 1,
-                        "draws": 5,
-                        "home_draws": 2,
-                        "away_draws": 3,
-                        "losses": 20,
-                        "home_losses": 11,
-                        "away_losses": 9,
-                        "goals_scored": 15,
-                        "home_goals_scored": 7,
-                        "away_goals_scored": 8,
-                        "goals_conceded": 50,
-                        "home_goals_conceded": 22,
-                        "away_goals_conceded": 28,
-                        "goals_difference": -35,
-                        "points": 14,
-                        "home_points": 8,
-                        "away_points": 6,
-                        "next_fixture": "BHA-(A)",
-                        "previous_fixtures": ["CHE-(H)", "MCI-(A)", "CAR-(H)", "EVE-(A)", "CRY-(H)", "LEI-(A)", "TOT-(H)", "BUR-(A)", "LIV-(H)", "WAT-(A)", "FUL-(H)", "WHU-(H)", "WOL-(A)", "BHA-(H)", "BOU-(A)", "ARS-(A)", "NEW-(A)", "SOU-(H)", "MUN-(A)", "FUL-(A)", "BUR-(H)", "CAR-(A)", "MCI-(H)", "EVE-(H)", "CHE-(A)", "ARS-(H)", "NEW-(A)", "WOL-(H)"],
-                        "results": ["0-3", "6-1", "0-0", "1-1", "0-1", "3-1", "0-2", "1-1", "0-1", "3-0", "1-0", "1-1", "0-2", "1-2", "2-1", "1-0", "0-1", "1-3", "1-1", "1-0", "1-2", "0-0", "0-3", "0-1", "5-0", "1-2", "2-0", "1-0"],
-                        "form": ["L", "L", "D", "D", "L", "L", "L", "D", "L", "L", "W", "D", "W", "L", "L", "L", "L", "L", "L", "L", "L", "D", "L", "L", "L", "L", "L", "W"]
-    },
-                    {
-                        "id": 11,
-                        "name": "Leicester City",
-                        "short_name": "Leicester",
-                        "club_code": "LEI",
-                        "stadium": "King Power Stadium",
-                        "capacity": 32273,
-                        "manager": "Claude Puel",
-                        "manager_nationality": "France",
-                        "position": 11,
-                        "last_week_position": 12,
-                        "games_played": 28,
-                        "home_games_played": 14,
-                        "away_games_played": 14,
-                        "wins": 10,
-                        "home_wins": 5,
-                        "away_wins": 5,
-                        "draws": 5,
-                        "home_draws": 2,
-                        "away_draws": 3,
-                        "losses": 13,
-                        "home_losses": 7,
-                        "away_losses": 6,
-                        "goals_scored": 34,
-                        "home_goals_scored": 18,
-                        "away_goals_scored": 16,
-                        "goals_conceded": 39,
-                        "home_goals_conceded": 18,
-                        "away_goals_conceded": 21,
-                        "goals_difference": -5,
-                        "points": 35,
-                        "home_points": 17,
-                        "away_points": 18,
-                        "next_fixture": "WAT-(A)",
-                        "previous_fixtures": ["MUN-(A)", "WOL-(H)", "SOU-(A)", "LIV-(H)", "BOU-(A)", "HUD-(H)", "NEW-(A)", "EVE-(H)", "ARS-(A)", "WHU-(H)", "CAR-(A)", "BUR-(H)", "BHA-(A)", "WAT-(H)", "FUL-(A)", "TOT-(H)", "CRY-(A)", "CHE-(A)", "MCI-(H)", "CAR-(H)", "EVE-(A)", "SOU-(H)", "WOL-(A)", "LIV-(A)", "MUN-(H)", "TOT-(A)", "CRY-(H)", "BHA-(H)"],
-                        "results": ["2-1", "2-0", "1-2", "1-2", "4-2", "3-1", "0-2", "1-2", "3-1", "1-1", "0-1", "0-0", "1-1", "2-0", "1-1", "0-2", "1-0", "0-1", "2-1", "0-1", "0-1", "1-2", "4-3", "1-1", "0-1", "3-1", "1-4", "2-1"],
-                        "form": ["L", "W", "W", "L", "L", "W", "W", "L", "L", "D", "W", "D", "D", "W", "D", "L", "L", "W", "W", "L", "W", "L", "L", "D", "L", "L", "L", "W"]
-    },
-                    {
-                        "id": 12,
-                        "name": "Liverpool",
-                        "short_name": "Liverpool",
-                        "club_code": "LIV",
-                        "stadium": "Anfield",
-                        "capacity": 53394,
-                        "manager": "Jürgen Klopp",
-                        "manager_nationality": "Germany",
-                        "position": 1,
-                        "last_week_position": 1,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 20,
-                        "home_wins": 11,
-                        "away_wins": 9,
-                        "draws": 6,
-                        "home_draws": 2,
-                        "away_draws": 4,
-                        "losses": 1,
-                        "home_losses": 0,
-                        "away_losses": 1,
-                        "goals_scored": 59,
-                        "home_goals_scored": 35,
-                        "away_goals_scored": 24,
-                        "goals_conceded": 15,
-                        "home_goals_conceded": 7,
-                        "away_goals_conceded": 8,
-                        "goals_difference": 44,
-                        "points": 66,
-                        "home_points": 35,
-                        "away_points": 31,
-                        "next_fixture": "WAT-(H)",
-                        "previous_fixtures": ["WHU-(H)", "CRY-(A)", "BHA-(H)", "LEI-(A)", "TOT-(A)", "SOU-(H)", "CHE-(A)", "MCI-(H)", "HUD-(A)", "CAR-(H)", "ARS-(A)", "FUL-(H)", "WAT-(A)", "EVE-(H)", "BUR-(A)", "BOU-(A)", "MUN-(H)", "WOL-(A)", "NEW-(H)", "ARS-(H)", "MCI-(A)", "BHA-(A)", "CRY-(H)", "LEI-(H)", "WHU-(A)", "BOU-(H)", "MUN-(A)"],
-                        "results": ["4-0", "0-2", "1-0", "1-2", "1-2", "3-0", "1-1", "0-0", "0-1", "4-1", "1-1", "2-0", "0-3", "1-0", "1-3", "0-4", "3-1", "0-2", "4-0", "5-1", "2-1", "0-1", "4-3", "1-1", "1-1", "3-0", "0-0"],
-                        "form": ["W", "W", "W", "W", "W", "W", "D", "D", "W", "W", "D", "W", "W", "W", "W", "W", "W", "W", "W", "W", "L", "W", "W", "D", "D", "W", "D"]
-    },
-                    {
-                        "id": 13,
-                        "name": "Manchester City",
-                        "short_name": "Man City",
-                        "club_code": "MCI",
-                        "stadium": "Etihad Stadium",
-                        "capacity": 55017,
-                        "manager": "Josep Guardiola",
-                        "manager_nationality": "Spain",
-                        "position": 2,
-                        "last_week_position": 2,
-                        "games_played": 27,
-                        "home_games_played": 14,
-                        "away_games_played": 13,
-                        "wins": 21,
-                        "home_wins": 13,
-                        "away_wins": 8,
-                        "draws": 2,
-                        "home_draws": 0,
-                        "away_draws": 2,
-                        "losses": 4,
-                        "home_losses": 1,
-                        "away_losses": 3,
-                        "goals_scored": 74,
-                        "home_goals_scored": 49,
-                        "away_goals_scored": 25,
-                        "goals_conceded": 20,
-                        "home_goals_conceded": 11,
-                        "away_goals_conceded": 9,
-                        "goals_difference": 54,
-                        "points": 65,
-                        "home_points": 39,
-                        "away_points": 26,
-                        "next_fixture": "WHU-(H)",
-                        "previous_fixtures": ["ARS-(A)", "HUD-(H)", "WOL-(A)", "NEW-(H)", "FUL-(H)", "CAR-(A)", "BHA-(H)", "LIV-(A)", "BUR-(H)", "TOT-(A)", "SOU-(H)", "MUN-(H)", "WHU-(A)", "BOU-(H)", "WAT-(A)", "CHE-(A)", "EVE-(H)", "CRY-(H)", "LEI-(A)", "SOU-(A)", "LIV-(H)", "WOL-(H)", "HUD-(A)", "NEW-(A)", "ARS-(H)", "EVE-(A)", "CHE-(H)"],
-                        "results": ["0-2", "6-1", "1-1", "2-1", "3-0", "0-5", "2-0", "0-0", "5-0", "0-1", "6-1", "3-1", "0-4", "3-1", "1-2", "2-0", "3-1", "2-3", "2-1", "1-3", "2-1", "3-0", "0-3", "2-1", "3-1", "0-2", "6-0"],
-                        "form": ["W", "W", "D", "W", "W", "W", "W", "D", "W", "W", "W", "W", "W", "W", "W", "L", "W", "L", "L", "W", "W", "W", "W", "L", "W", "W", "W"]
-    },
-                    {
-                        "id": 14,
-                        "name": "Manchester United",
-                        "short_name": "Man Utd",
-                        "club_code": "MUN",
-                        "stadium": "Old Trafford",
-                        "capacity": 74994,
-                        "manager": "Ole Gunnar Solskjær",
-                        "manager_nationality": "Norway",
-                        "position": 5,
-                        "last_week_position": 5,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 15,
-                        "home_wins": 7,
-                        "away_wins": 8,
-                        "draws": 7,
-                        "home_draws": 5,
-                        "away_draws": 2,
-                        "losses": 5,
-                        "home_losses": 1,
-                        "away_losses": 4,
-                        "goals_scored": 52,
-                        "home_goals_scored": 28,
-                        "away_goals_scored": 24,
-                        "goals_conceded": 35,
-                        "home_goals_conceded": 16,
-                        "away_goals_conceded": 19,
-                        "goals_difference": 17,
-                        "points": 52,
-                        "home_points": 26,
-                        "away_points": 26,
-                        "next_fixture": "CRY-(A)",
-                        "previous_fixtures": ["LEI-(H)", "BHA-(A)", "TOT-(H)", "BUR-(A)", "WAT-(A)", "WOL-(H)", "WHU-(A)", "NEW-(H)", "CHE-(A)", "EVE-(H)", "BOU-(A)", "MCI-(A)", "CRY-(H)", "SOU-(A)", "ARS-(H)", "FUL-(H)", "LIV-(A)", "CAR-(A)", "HUD-(H)", "BOU-(H)", "NEW-(A)", "TOT-(A)", "BHA-(H)", "BUR-(H)", "LEI-(A)", "FUL-(A)", "LIV-(H)"],
-                        "results": ["2-1", "3-2", "0-3", "0-2", "1-2", "1-1", "3-1", "3-2", "2-2", "2-1", "1-2", "3-1", "0-0", "2-2", "2-2", "4-1", "3-1", "1-5", "2-1", "4-1", "0-2", "0-1", "2-1", "2-2", "0-1", "0-3", "0-0"],
-                        "form": ["W", "L", "L", "W", "W", "D", "L", "W", "D", "W", "W", "L", "D", "D", "D", "W", "L", "W", "W", "W", "W", "W", "W", "D", "W", "W", "D"]
-    },
-                    {
-                        "id": 15,
-                        "name": "Newcastle United",
-                        "short_name": "Newcastle",
-                        "club_code": "NEW",
-                        "stadium": "St. James' Park",
-                        "capacity": 52040,
-                        "manager": "Rafa Benítez",
-                        "manager_nationality": "Spain",
-                        "position": 13,
-                        "last_week_position": 15,
-                        "games_played": 28,
-                        "home_games_played": 15,
-                        "away_games_played": 13,
-                        "wins": 8,
-                        "home_wins": 6,
-                        "away_wins": 2,
-                        "draws": 7,
-                        "home_draws": 1,
-                        "away_draws": 6,
-                        "losses": 13,
-                        "home_losses": 8,
-                        "away_losses": 5,
-                        "goals_scored": 26,
-                        "home_goals_scored": 16,
-                        "away_goals_scored": 10,
-                        "goals_conceded": 34,
-                        "home_goals_conceded": 18,
-                        "away_goals_conceded": 16,
-                        "goals_difference": -8,
-                        "points": 31,
-                        "home_points": 19,
-                        "away_points": 12,
-                        "next_fixture": "WHU-(A)",
-                        "previous_fixtures": ["TOT-(H)", "CAR-(A)", "CHE-(H)", "MCI-(A)", "ARS-(H)", "CRY-(A)", "LEI-(H)", "MUN-(A)", "BHA-(H)", "SOU-(A)", "WAT-(H)", "BOU-(H)", "BUR-(A)", "WHU-(H)", "EVE-(A)", "WOL-(H)", "HUD-(A)", "FUL-(H)", "LIV-(A)", "WAT-(A)", "MUN-(H)", "CHE-(A)", "CAR-(H)", "MCI-(H)", "TOT-(A)", "WOL-(A)", "HUD-(H)", "BUR-(H)"],
-                        "results": ["1-2", "0-0", "1-2", "2-1", "1-2", "0-0", "0-2", "3-2", "0-1", "0-0", "1-0", "2-1", "1-2", "0-3", "1-1", "1-2", "0-1", "0-0", "4-0", "1-1", "0-2", "2-1", "3-0", "2-1", "1-0", "1-1", "2-0", "2-0"],
-                        "form": ["L", "D", "L", "L", "L", "D", "L", "L", "L", "D", "W", "W", "W", "L", "D", "L", "W", "D", "L", "D", "L", "L", "W", "W", "L", "D", "W", "W"]
-    },
-                    {
-                        "id": 16,
-                        "name": "Southampton",
-                        "short_name": "Southampton",
-                        "club_code": "SOU",
-                        "stadium": "St. Mary's Stadium",
-                        "capacity": 32384,
-                        "manager": "Ralph Hasenhüttl",
-                        "manager_nationality": "Austria",
-                        "position": 18,
-                        "last_week_position": 18,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 5,
-                        "home_wins": 2,
-                        "away_wins": 3,
-                        "draws": 9,
-                        "home_draws": 6,
-                        "away_draws": 3,
-                        "losses": 13,
-                        "home_losses": 5,
-                        "away_losses": 8,
-                        "goals_scored": 28,
-                        "home_goals_scored": 15,
-                        "away_goals_scored": 13,
-                        "goals_conceded": 46,
-                        "home_goals_conceded": 21,
-                        "away_goals_conceded": 25,
-                        "goals_difference": -18,
-                        "points": 24,
-                        "home_points": 12,
-                        "away_points": 12,
-                        "next_fixture": "FUL-(H)",
-                        "previous_fixtures": ["BUR-(H)", "EVE-(A)", "LEI-(H)", "CRY-(A)", "BHA-(H)", "LIV-(A)", "WOL-(A)", "CHE-(H)", "BOU-(A)", "NEW-(H)", "MCI-(A)", "WAT-(H)", "FUL-(A)", "MUN-(H)", "TOT-(A)", "CAR-(A)", "ARS-(H)", "HUD-(A)", "WHU-(H)", "MCI-(H)", "CHE-(A)", "LEI-(A)", "EVE-(H)", "CRY-(H)", "BUR-(A)", "CAR-(H)", "ARS-(A)"],
-                        "results": ["0-0", "2-1", "1-2", "0-2", "2-2", "3-0", "2-0", "0-3", "0-0", "0-0", "6-1", "1-1", "3-2", "2-2", "3-1", "1-0", "3-2", "1-3", "1-2", "1-3", "0-0", "1-2", "2-1", "1-1", "1-1", "1-2", "2-0"],
-                        "form": ["D", "L", "L", "W", "D", "L", "L", "L", "D", "D", "L", "D", "L", "D", "L", "L", "W", "W", "L", "L", "D", "W", "W", "D", "D", "L", "L"]
-    },
-                    {
-                        "id": 17,
-                        "name": "Tottenham Hotspur",
-                        "short_name": "Spurs",
-                        "club_code": "TOT",
-                        "stadium": "Wembley Stadium",
-                        "capacity": 90000,
-                        "manager": "Mauricio Pochettino",
-                        "manager_nationality": "Argentina",
-                        "position": 3,
-                        "last_week_position": 3,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 20,
-                        "home_wins": 9,
-                        "away_wins": 11,
-                        "draws": 0,
-                        "home_draws": 0,
-                        "away_draws": 0,
-                        "losses": 7,
-                        "home_losses": 4,
-                        "away_losses": 3,
-                        "goals_scored": 55,
-                        "home_goals_scored": 24,
-                        "away_goals_scored": 31,
-                        "goals_conceded": 27,
-                        "home_goals_conceded": 12,
-                        "away_goals_conceded": 15,
-                        "goals_difference": 28,
-                        "points": 60,
-                        "home_points": 27,
-                        "away_points": 33,
-                        "next_fixture": "CHE-(A)",
-                        "previous_fixtures": ["NEW-(A)", "FUL-(H)", "MUN-(A)", "WAT-(A)", "LIV-(H)", "BHA-(A)", "HUD-(A)", "CAR-(H)", "WHU-(A)", "MCI-(H)", "WOL-(A)", "CRY-(A)", "CHE-(H)", "ARS-(A)", "SOU-(H)", "LEI-(A)", "BUR-(H)", "EVE-(A)", "BOU-(H)", "WOL-(H)", "CAR-(A)", "MUN-(H)", "FUL-(A)", "WAT-(H)", "NEW-(H)", "LEI-(H)", "BUR-(A)"],
-                        "results": ["1-2", "3-1", "0-3", "2-1", "1-2", "1-2", "0-2", "1-0", "0-1", "0-1", "2-3", "0-1", "3-1", "4-2", "3-1", "0-2", "1-0", "2-6", "5-0", "1-3", "0-3", "0-1", "1-2", "2-1", "1-0", "3-1", "2-1"],
-                        "form": ["W", "W", "W", "L", "L", "W", "W", "W", "W", "L", "W", "W", "W", "L", "W", "W", "W", "W", "W", "L", "W", "L", "W", "W", "W", "W", "L"]
-    },
-                    {
-                        "id": 18,
-                        "name": "Watford",
-                        "short_name": "Watford",
-                        "club_code": "WAT",
-                        "stadium": "Vicarage Road",
-                        "capacity": 21000,
-                        "manager": "Javi Gracia",
-                        "manager_nationality": "Spain",
-                        "position": 7,
-                        "last_week_position": 7,
-                        "games_played": 27,
-                        "home_games_played": 13,
-                        "away_games_played": 14,
-                        "wins": 11,
-                        "home_wins": 6,
-                        "away_wins": 5,
-                        "draws": 7,
-                        "home_draws": 2,
-                        "away_draws": 5,
-                        "losses": 9,
-                        "home_losses": 5,
-                        "away_losses": 4,
-                        "goals_scored": 39,
-                        "home_goals_scored": 17,
-                        "away_goals_scored": 22,
-                        "goals_conceded": 35,
-                        "home_goals_conceded": 17,
-                        "away_goals_conceded": 18,
-                        "goals_difference": 4,
-                        "points": 40,
-                        "home_points": 20,
-                        "away_points": 20,
-                        "next_fixture": "LIV-(A)",
-                        "previous_fixtures": ["BHA-(H)", "BUR-(A)", "CRY-(H)", "TOT-(H)", "MUN-(H)", "FUL-(A)", "ARS-(A)", "BOU-(H)", "WOL-(A)", "HUD-(H)", "NEW-(A)", "SOU-(A)", "LIV-(H)", "LEI-(A)", "MCI-(H)", "EVE-(A)", "CAR-(H)", "WHU-(A)", "CHE-(H)", "NEW-(H)", "BOU-(A)", "CRY-(A)", "BUR-(H)", "TOT-(A)", "BHA-(A)", "EVE-(H)", "CAR-(A)"],
-                        "results": ["2-0", "1-3", "2-1", "2-1", "1-2", "1-1", "2-0", "0-4", "0-2", "3-0", "1-0", "1-1", "0-3", "0-2", "1-2", "2-2", "3-2", "0-2", "1-2", "1-1", "3-3", "1-2", "0-0", "2-1", "0-0", "1-0", "1-5"],
-                        "form": ["W", "W", "W", "W", "L", "D", "L", "L", "W", "W", "L", "D", "L", "L", "L", "D", "W", "W", "L", "D", "D", "W", "D", "L", "D", "W", "W"]
-    },
-                    {
-                        "id": 19,
-                        "name": "West Ham United",
-                        "short_name": "West Ham",
-                        "club_code": "WHU",
-                        "stadium": "London Stadium",
-                        "capacity": 60000,
-                        "manager": "Manuel Pellegrini",
-                        "manager_nationality": "Chile",
-                        "position": 10,
-                        "last_week_position": 9,
-                        "games_played": 27,
-                        "home_games_played": 14,
-                        "away_games_played": 13,
-                        "wins": 10,
-                        "home_wins": 6,
-                        "away_wins": 4,
-                        "draws": 6,
-                        "home_draws": 3,
-                        "away_draws": 3,
-                        "losses": 11,
-                        "home_losses": 5,
-                        "away_losses": 6,
-                        "goals_scored": 35,
-                        "home_goals_scored": 21,
-                        "away_goals_scored": 14,
-                        "goals_conceded": 40,
-                        "home_goals_conceded": 20,
-                        "away_goals_conceded": 20,
-                        "goals_difference": -5,
-                        "points": 36,
-                        "home_points": 21,
-                        "away_points": 15,
-                        "next_fixture": "MCI-(A)",
-                        "previous_fixtures": ["LIV-(A)", "BOU-(H)", "ARS-(A)", "WOL-(H)", "EVE-(A)", "CHE-(H)", "MUN-(H)", "BHA-(A)", "TOT-(H)", "LEI-(A)", "BUR-(H)", "HUD-(A)", "MCI-(H)", "NEW-(A)", "CAR-(H)", "CRY-(H)", "FUL-(A)", "WAT-(H)", "SOU-(A)", "BUR-(A)", "BHA-(H)", "ARS-(H)", "BOU-(A)", "WOL-(A)", "LIV-(H)", "CRY-(A)", "FUL-(H)"],
-                        "results": ["4-0", "1-2", "3-1", "0-1", "1-3", "0-0", "3-1", "1-0", "0-1", "1-1", "4-2", "1-1", "0-4", "0-3", "3-1", "3-2", "0-2", "0-2", "1-2", "2-0", "2-2", "1-0", "2-0", "3-0", "1-1", "1-1", "3-1"],
-                        "form": ["L", "L", "L", "L", "W", "D", "W", "L", "L", "D", "W", "D", "L", "W", "W", "W", "W", "L", "W", "L", "D", "W", "L", "L", "D", "D", "W"]
-    },
-                    {
-                        "id": 20,
-                        "name": "Wolverhampton Wanderers",
-                        "short_name": "Wolves",
-                        "club_code": "WOL",
-                        "stadium": "Molineux Stadium",
-                        "capacity": 31700,
-                        "manager": "Nuno",
-                        "manager_nationality": "Portugal",
-                        "position": 8,
-                        "last_week_position": 8,
-                        "games_played": 28,
-                        "home_games_played": 14,
-                        "away_games_played": 14,
-                        "wins": 11,
-                        "home_wins": 6,
-                        "away_wins": 5,
-                        "draws": 7,
-                        "home_draws": 3,
-                        "away_draws": 4,
-                        "losses": 10,
-                        "home_losses": 5,
-                        "away_losses": 5,
-                        "goals_scored": 35,
-                        "home_goals_scored": 23,
-                        "away_goals_scored": 12,
-                        "goals_conceded": 35,
-                        "home_goals_conceded": 18,
-                        "away_goals_conceded": 17,
-                        "goals_difference": 0,
-                        "points": 40,
-                        "home_points": 21,
-                        "away_points": 19,
-                        "next_fixture": "CAR-(H)",
-                        "previous_fixtures": ["EVE-(H)", "LEI-(A)", "MCI-(H)", "WHU-(A)", "BUR-(H)", "MUN-(A)", "SOU-(H)", "CRY-(A)", "WAT-(H)", "BHA-(A)", "TOT-(H)", "ARS-(A)", "HUD-(H)", "CAR-(A)", "CHE-(H)", "NEW-(A)", "BOU-(H)", "LIV-(H)", "FUL-(A)", "TOT-(A)", "CRY-(H)", "MCI-(A)", "LEI-(H)", "WHU-(H)", "EVE-(A)", "NEW-(H)", "BOU-(A)", "HUD-(A)"],
-                        "results": ["2-2", "2-0", "1-1", "0-1", "1-0", "1-1", "2-0", "0-1", "0-2", "1-0", "2-3", "1-1", "0-2", "2-1", "2-1", "1-2", "2-0", "0-2", "1-1", "1-3", "0-2", "3-0", "4-3", "3-0", "1-3", "1-1", "1-1", "1-0"],
-                        "form": ["D", "L", "D", "W", "W", "D", "W", "W", "L", "L", "L", "D", "L", "L", "W", "W", "W", "L", "D", "W", "L", "L", "W", "W", "W", "D", "D", "L"]
-    }],
+                    giveMeThePlayers(teamName) {
+                        return data.players.filter(player => player.current_club == teamName)
+                    },
+//                    giveMeTheMatchDays(dayOfMatch){
+//                        return data.season_fixtures.filter(games => games.matchday == dayOfMatch)
+//                    }
+//                    
+                    orderByPosition() {
+                        //    "[...]" makes a new copy of an array
+                        var sortPosition = [...app.clubs].sort((a, b) => {
+                            return a.position - b.position
+                        })
+                        app.table = sortPosition
+                        return sortPosition
+                    },
+                    pastGames() {
+                        var compleatedGames = [];
+                        for (var i = 0; i < allGames.length; i++) {
+                            allGames[i].fixtures.forEach(game => {
+                                if (game.status == "FT") {
+                                    compleatedGames.push(game);
+                                }
+                            })
+                        }
+                        app.playedGames = compleatedGames
+                        return compleatedGames;
+                    },
+                    futureGames1() {
+                        var uncompleatedGame = [];
+
+                        for (var i = 0; i < allGames.length; i++) {
+                            allGames[i].fixtures.forEach(game => {
+                                if (!game.status) {
+                                    uncompleatedGame.push(game);
+                                }
+                            })
+                        }
+                        app.futureGames = uncompleatedGame
+                        return uncompleatedGame;
+                    },
+                    login() {
+                        // https://firebase.google.com/docs/auth/web/google-signin
+                        //Provider
+                        var provider = new firebase.auth.GoogleAuthProvider();
+                        //How to signin
+                        firebase.auth().signInWithPopup(provider)
+                            // to push message in the app after connect
+
+                            .then(function (result) {
+                                if (result.credential) {
+                                    getPosts()
+                                    getPosts1()
+                                }
+                            }).catch(console.log("error"))
+                        console.log("login")
+                    },
+                    logout() {
+                        firebase.auth().signOut().then(function () {
+                            // Sign-out successful.
+                        }, function (error) {
+                            // An error happened.
+                        });
+                        document.getElementById("posts1").style.display = "none"
+                        document.getElementById("posts").style.display = "none"
+
+                    },
+                    writeNewPost() {
+                        // https://firebase.google.com/docs/database/web/read-and-write
+                        //Values from HTML
+                        var text = document.getElementById("textInput").value;
+                        var name = firebase.auth().currentUser.displayName;
+                        var dateStamp = new Date();
+                        var timeStamp = new Date();
+
+                        var objectToSend = {
+                            author: name,
+                            message: "''" + text + "''",
+                            hello: " " + timeStamp.toLocaleTimeString() + " " + dateStamp.toDateString(),
+                        }
+                        firebase.database().ref("chatMessages").push(objectToSend);;
+                        console.log(objectToSend);
+                        document.getElementById("textInput").value = ''
+                        chatScroll()
+                        // Values
+                        console.log("write");
+                    },
+                    writeNewPost1() {
+                        // https://firebase.google.com/docs/database/web/read-and-write
+                        //Values from HTML
+                        var text = document.getElementById("textInput1").value;
+                        var name = firebase.auth().currentUser.displayName;
+                        var dateStamp = new Date();
+                        var timeStamp = new Date();
+                        var objectToSend = {
+                            author: name,
+                            message: "''" + text + "''",
+                            hello: " " + timeStamp.toLocaleTimeString() + " " + dateStamp.toDateString(),
+                        }
+                        firebase.database().ref("chatMessages1").push(objectToSend);;
+                        console.log(objectToSend);
+
+                        document.getElementById("textInput1").value = ''
+                        chatScroll1()
+                        // Values
+                        console.log("write");
+
+                    },
 
 
 
-                    "fixtures": [{
-                            "id": 1001,
-                            "home_team": "Manchester United",
-                            "home_team_code": "MUN",
-                            "away_team": "Leicester City",
-                            "away_team_code": "LEI",
-                            "fixture_code": "MUNLEI",
-                            "venue": "Old Trafford",
-                            "date": "10-08-2018",
-                            "local_time": "20:00:00",
-                            "attendance": 74439,
-                            "half_time_score": "1-0",
-                            "full_time_score": "2-1",
-                            "home_team_goals": 2,
-                            "away_team_goals": 1,
-                            "home_team_scorers": ["Pogba 3' (P)", "Shaw 83'"],
-                            "away_team_scorers": ["Vardy 90 +2'"],
-                            "postponed": false,
-                            "status": "FT"
-        },
-                        {
-                            "id": 1002,
-                            "home_team": "Newcastle United",
-                            "home_team_code": "NEW",
-                            "away_team": "Tottenham Hotspur",
-                            "away_team_code": "TOT",
-                            "fixture_code": "NEWTOT",
-                            "venue": "St. James' Park",
-                            "date": "11-08-2018",
-                            "local_time": "12:30:00",
-                            "attendance": 51749,
-                            "half_time_score": "1-2",
-                            "full_time_score": "1-2",
-                            "home_team_goals": 1,
-                            "away_team_goals": 2,
-                            "home_team_scorers": ["Joselu 11'"],
-                            "away_team_scorers": ["Vertonghen 8'", "Alli 18'"],
-                            "postponed": false,
-                            "status": "FT"
-        },
-                        {
-                            "id": 1003,
-                            "home_team": "Bournemouth",
-                            "home_team_code": "BOU",
-                            "away_team": "Cardiff City",
-                            "away_team_code": "CAR",
-                            "fixture_code": "BOUCAR",
-                            "venue": "Vitality Stadium",
-                            "date": "11-08-2018",
-                            "local_time": "15:00:00",
-                            "attendance": 10353,
-                            "half_time_score": "1-0",
-                            "full_time_score": "2-0",
-                            "home_team_goals": 2,
-                            "away_team_goals": 0,
-                            "home_team_scorers": ["Fraser 24'", "Wilson 90 +1'"],
-                            "away_team_scorers": [],
-                            "postponed": false,
-                            "status": "FT"
-        },
-                        {
-                            "id": 1004,
-                            "home_team": "Fulham",
-                            "home_team_code": "FUL",
-                            "away_team": "Crystal Palace",
-                            "away_team_code": "CRY",
-                            "fixture_code": "FULCRY",
-                            "venue": "Craven Cottage",
-                            "date": "11-08-2018",
-                            "local_time": "15:00:00",
-                            "attendance": 24821,
-                            "half_time_score": "0-1",
-                            "full_time_score": "0-2",
-                            "home_team_goals": 0,
-                            "away_team_goals": 2,
-                            "home_team_scorers": [],
-                            "away_team_scorers": ["Zaha 79'", "Schlupp 41'"],
-                            "postponed": false,
-                            "status": "FT"
-        },
-                        {
-                            "id": 1005,
-                            "home_team": "Huddersfield Town",
-                            "home_team_code": "HUD",
-                            "away_team": "Chelsea",
-                            "away_team_code": "CHE",
-                            "fixture_code": "HUDCHE",
-                            "venue": "John Smith's Stadium",
-                            "date": "11-08-2018",
-                            "local_time": "15:00:00",
-                            "attendance": 24121,
-                            "half_time_score": "0-2",
-                            "full_time_score": "0-3",
-                            "home_team_goals": 0,
-                            "away_team_goals": 3,
-                            "home_team_scorers": [],
-                            "away_team_scorers": ["Kanté 34'", "Jorginho 45' (P)", "Pedro 80'"],
-                            "postponed": false,
-                            "status": "FT"
-        },
-                        {
-                            "id": 1006,
-                            "home_team": "Watford",
-                            "home_team_code": "WAT",
-                            "away_team": "Brighton and Hove Albion",
-                            "away_team_code": "BHA",
-                            "fixture_code": "WATBHA",
-                            "venue": "Vicarage Road",
-                            "date": "11-08-2018",
-                            "local_time": "15:00:00",
-                            "attendance": 20051,
-                            "half_time_score": "1-0",
-                            "full_time_score": "2-0",
-                            "home_team_goals": 2,
-                            "away_team_goals": 0,
-                            "home_team_scorers": ["Pereyra 35'", "Pereyra 54'"],
-                            "away_team_scorers": [],
-                            "postponed": false,
-                            "status": "FT"
-        },
-                        {
-                            "id": 1007,
-                            "home_team": "Wolverhampton Wanderers",
-                            "home_team_code": "WOL",
-                            "away_team": "Everton",
-                            "away_team_code": "EVE",
-                            "fixture_code": "WOLEVE",
-                            "venue": "Molineux Stadium",
-                            "date": "11-08-2018",
-                            "local_time": "21:30:00",
-                            "attendance": 31231,
-                            "half_time_score": "1-1",
-                            "full_time_score": "2-2",
-                            "home_team_goals": 2,
-                            "away_team_goals": 2,
-                            "home_team_scorers": ["Neves 44'", "Jiménez 80'"],
-                            "away_team_scorers": ["Richarlison 17'", "Richarlison 67'"],
-                            "postponed": false,
-                            "status": "FT"
-        },
-                        {
-                            "id": 1008,
-                            "home_team": "Liverpool",
-                            "home_team_code": "LIV",
-                            "away_team": "West Ham United",
-                            "away_team_code": "WHU",
-                            "fixture_code": "LIVWHU",
-                            "venue": "Anfield",
-                            "date": "12-08-2018",
-                            "local_time": "13:30:00",
-                            "attendance": 53235,
-                            "half_time_score": "2-0",
-                            "full_time_score": "4-0",
-                            "home_team_goals": 4,
-                            "away_team_goals": 0,
-                            "home_team_scorers": ["Salah 19'", "Mané 47'", "Mané 53'", "Sturridge 88'"],
-                            "away_team_scorers": [],
-                            "postponed": false,
-                            "status": "FT"
-        },
-
-]},
-                                    
-                                    
 
 
-                    
-                   });
+
+
+
+                }
+
+            });
+var allGames = app.fixtures
+            var allPlayers = data.players
+            var allClubs = data.clubs
+
+            app.orderByPosition()
+
+
+
+          
+
+
+            function getPosts() {
+
+                //Get messages
+
+                firebase.database().ref("chatMessages").on('value', function (data) {
+                    var posts = document.getElementById("posts");
+                    posts.innerHTML = "";
+                    console.log(data.val());
+                    var messages = data.val();
+                    for (var key in messages) {
+                        var text = document.createElement("div");
+                        
+                        var element = messages[key];
+                        
+                        var node = document.createElement("p");
+                        var node3 = document.createElement("p");
+                        var node2 = document.createElement("p");
+
+                        node.append(element.author);
+                        node2.append(element.message);
+                        node3.append(element.hello);
+
+                        text.append(node, node3, node2);
+
+                        //         var textnode = 
+                        posts.append(text);
+                        
+                        if (element.author == firebase.auth().currentUser.displayName) {
+                       text.classList.add("chatBox")
+                   } else {
+                       text.classList.add("chatBox1")
+                   }
+                        
+
+                        //            node.appendChild(textnode);
+                        //            document.getElementById("posts").appendChild(node);
+                    }
+                })
+
+                console.log("getting posts");
+
+            }
+
+
+            function chatScroll() {
+                document.getElementById("posts").scrollTop = document.getElementById("posts").scrollHeight
+            }
+
+            function chatScroll1() {
+                document.getElementById("posts1").scrollTop = document.getElementById("posts1").scrollHeight
+            }
+
+
+
+//
+//            document.getElementById("create-post1").addEventListener("click", writeNewPost1);
+
+
+
+            //            function
+
+
+            function getPosts1() {
+
+                //Get messages
+
+                firebase.database().ref("chatMessages1").on('value', function (data) {
+                    var posts = document.getElementById("posts1");
+                    posts1.innerHTML = "";
+                    console.log(data.val());
+                    var messages = data.val();
+                    for (var key in messages) {
+                        var text = document.createElement("div");
+                        var element = messages[key];
+                        var node = document.createElement("p");
+                        var node2 = document.createElement("p");
+                        var node3 = document.createElement("p");
+
+                        node.append(element.author);
+                        node2.append(element.message);
+                        node3.append(element.hello);
+
+                        text.append(node, node3, node2);
+
+                        //         var textnode = 
+                        posts1.append(text);
+                        console.log (element.author)
+                        
+                            if (element.author == firebase.auth().currentUser.displayName) {
+                       text.classList.add("chatBox")
+                   } else {
+                       text.classList.add("chatBox1")
+                   }
+
+                        //            node.appendChild(textnode);
+                        //            document.getElementById("posts").appendChild(node);
+                    }
+                })
+
+                console.log("getting posts");
+
+            }
+
+            //Chat js
+
+//            document.getElementById("login").addEventListener("click", login);
+//
+//            document.getElementById("logout").addEventListener("click", logout);
+//
+//
+//            document.getElementById("create-post").addEventListener("click", writeNewPost);
+
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                } else {
+                    // No user is signed in.
+                }
+            });

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,48 +38,70 @@
 </head>
 
 <body>
-
     <div class="container" id="app">
-        <div>
-            <nav class="navbar fixed-bottom">
-                <div class="row">
-                    <button class="btn-dark col-2" onclick="showGamesDiv()"><i class="far fa-futbol"></i></button>
-                    <button class="btn-dark col-2" onclick="showTeamsDiv()"><i class="fas fa-tshirt"></i></button>
-                    <button class="btn-dark col-4" onclick="showHomeDiv()"><i class="fa fa-home"></i> </button>
-                    <button class="btn-dark col-2" onclick="showSignInDiv()"><i class="fas fa-sign-in-alt"></i></button>
-                    <button class="btn-dark col-2" onclick="showContactDiv()"><i class="fas fa-at"></i></button>
-                </div>
-            </nav>
-        </div>
 
-        <img src="/StyleSheets/nysl_logo.png" onclick="showHomeDiv()" alt="logo" id="logo">
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar fixed-bottom">
+                    <button class="btn-dark col-2" v-on:click="view = 'games'"><i class="far fa-futbol"></i></button>
 
-        <div class="collapse" id="homePage">
-            <h2>Up coming events</h2>
-            <div>
-                <p>a list of up coming events</p>
+                    <button class="btn-dark col-2" v-on:click="view = 'teams'"><i class="fas fa-tshirt"></i></button>
+
+                    <button class="btn-dark col-4" v-on:click="view = 'home'"><i class="fa fa-home"></i> </button>
+
+                    <button class="btn-dark col-2" v-on:click="view = 'signIn'"><i class="far fa-comments"></i></button>
+
+                    <button class="btn-dark col-2" v-on:click="view = 'contact'"><i class="fas fa-at"></i></button>
+                </nav>
             </div>
-            <h2>August 4</h2>
-            <p class="indent">NYSL Fundraiser</p>
-
-            <h2>August 16</h2>
-            <p class="indent">Season Kick-off: Meet the Teams</p>
-
-            <h2>September 1</h2>
-            <p class="indent"> First Game of the Season (Check Game Schedule for details)</p>
         </div>
 
 
 
+        <div v-show="view == 'home'" id="homePage">
+            <img src="/StyleSheets/Logo/premier-league-logo-vector.png" alt="logo" id="logo">
+            <h2>Latest News</h2>
+            <div class="aDivInHome">
+
+
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/StyleSheets/Logo/news%20card.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">News</h5>
+                        <p class="card-text">Man Utd's Ole Gunnar Solskjaer unsure of contractual status with Molde</p>
+                        <a href="https://www.premierleague.com/news" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/StyleSheets/Logo/wolves%20card.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">News</h5>
+                        <p class="card-text">Wolves are best of the rest in the Premier League: The tactical change that helped to make it happen</p>
+                        <a href="https://www.premierleague.com/news" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+
+            </div>
 
 
 
+            <div>
+                <a class="twitter-timeline" data-height="800" data-dnt="true" href="https://twitter.com/premierleague?ref_src=twsrc%5Etfw">Tweets by premierleague</a>
 
-        <!--        div for the gmaes page-->
+            </div>
 
 
-        <div class="gamesDiv collapse" id="gamesPage">
 
+        </div>
+
+
+
+        <!--        div for the games page-->
+
+
+        <div class="gamesDiv" v-show="view == 'games'" id="gamesPage">
+            <img src="StyleSheets/Logo/Premier_League_Logo.svg.png" alt="Premier League" class="PLlogo">
 
             <h2>Up coming games</h2>
             <p>Information about games and shit like that!</p>
@@ -91,242 +114,329 @@
 
 
 
+            <!--
 
             <div class="flexy_box" id="gamePages2">
 
+                <div>
+-->
 
-                <h2>Up Coming Games</h2>
 
 
-                <div v-for="item in fixtures">
-                    <button class="btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#dateTimeVenue">{{item.home_team_code}} vs
-                        {{item.away_team_code}}
-                    </button>
-                    <div class="card card-body collapse" id="dateTimeVenue">
-                        <p>Time: {{item.local_time}}</p>
-                        <p>Date: {{item.date}}</p>
-                        <p>Venue: {{item.venue}}</p>
+            <div id="accordion">
 
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" v-on:click=futureGames1()>
+                                <h3>Up coming games</h3>
+                            </button>
+                        </h5>
                     </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
 
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h3>A Leauge table</h3>
-
-                        <table class="table table-bordered table-hover text-center table-condensed ">
-                            <thead>
-                                <th>Pos</th>
-                                <th>Team</th>
-                                <th>Pl</th>
-                                <th>W</th>
-                                <th>D</th>
-                                <th>L</th>
-                                <th>Pts</th>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item in clubs">
-                                    <td>{{item.position}}</td>
-                                    <td>{{item.name}}</td>
-                                    <td>{{item.games_played}}</td>
-                                    <td>{{item.wins}}</td>
-                                    <td>{{item.draws}}</td>
-                                    <td>{{item.losses}}</td>
-                                    <td>{{item.points}}</td>
-                                </tr>
-                            </tbody>
+                            <div v-for="(item, i) in futureGames">
+                                <button class="btn-secondary btn-lg btn-block" data-toggle="collapse" :data-target="'#dateTimeVenue' + i" v-on:click=futureGames1()>{{item.home_team_code}} {{item.home_team_goals}} -
+                                    {{item.away_team_goals}} {{item.away_team_code}}
+                                </button>
 
 
-                        </table>
+                                <div class="card card-body collapse" :id="'dateTimeVenue' + i">
+                                    <p>Time: {{item.local_time}}</p>
+                                    <p>Date: {{item.date}}</p>
+                                    <p>Venue: {{item.venue}}</p>
 
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" v-on:click=pastGames()>
+                                <h3>Past games</h3>
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <div v-for="(item, i) in playedGames">
+                                <button class="btn-secondary btn-lg btn-block" data-toggle="collapse" :data-target="'#gamesInThePast' + i">{{item.home_team_code}} {{item.home_team_goals}} -
+                                    {{item.away_team_goals}} {{item.away_team_code}}
+                                </button>
 
 
 
+
+
+                                <div class="card card-body collapse" :id="'gamesInThePast' + i">
+                                    <p>Date: {{item.date}}</p>
+                                    <p>Half time score:{{item.half_time_score}}</p>
+                                    <p>{{item.home_team_code}} goal scores{{item.home_team_scorers}}</p>
+                                    <p>{{item.away_team_code}} goal scores{{item.away_team_scorers}}</p>
+                                    <p>Offical attendance: {{item.attendance}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>League table</h3>
+
+                    <table class="table table-bordered table-hover text-center table-condensed ">
+                        <thead>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>Pl</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>Pts</th>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in table">
+                                <td>{{item.position}}</td>
+                                <td>{{item.club_code}}</td>
+                                <td>{{item.games_played}}</td>
+                                <td>{{item.wins}}</td>
+                                <td>{{item.draws}}</td>
+                                <td>{{item.losses}}</td>
+                                <td>{{item.points}}</td>
+                            </tr>
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!--        </div>-->
+        <!--    </div>-->
+
+
+        <!--    div for teams-->
+        <div class="teamsDiv" v-show="view == 'teams'" id="teamsPage">
+
+            <img src="StyleSheets/Logo/Premier_League_Logo.svg.png" alt="Premier League" class="PLlogo">
+
+            <h2>The Teams and results tables</h2>
+            <div>
+                <p>This div should have information about the league and how other teams are doing their results and shit like that!
+                </p>
+                <p>You should be able to click on different leagues and see results tables</p>
+            </div>
+            <div class="container teamContain">
+
+
+                <div>
+                    <h2>Team</h2>
+                </div>
 
                 <!--
-                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonOne">
+               
+               this function gives a new id for every element based on the index number in the array the : operator tells vue that we are about to use a conditional function
+-->
+                <div v-for="(item, i) in clubs">
+                    <p><button class="btn-secondary teamButtons btn-lg btn-block" data-toggle="collapse" :data-target="'#teamName' + i"><img :src="'/StyleSheets/logo/'+item.logo" class="teamLogo">{{item.name}}</button></p>
 
-                    Team 1 vs Team 2
+                    <div class="panel collapse theOverflow" :id="'teamName' + i">
+                        <p>Goals Scored: {{item.goals_scored}}</p>
+                        <p>Goal s Conceded: {{item.goals_conceded}}</p>
+                        <p>Goal Difference: {{item.goals_difference}}</p>
+                        <p>Next Fixture: {{item.next_fixture}}</p>
+                        <p>Team Manager: {{item.manager}}</p>
 
-                </button>
-                <div class="card card-body collapse" id="teamButtonOne" data-parent="#gamePages2">
-                    <h3>Time</h3>
-                    <p>09:30</p>
-
-                    <h3>location</h3>
-
-
-                    <h4>AJ Katzenmaier Elementary</h4>
-                    <div class="mapChild">
-
-                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.7810520615835!2d-87.86492878454477!3d42.32586847918918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880f932fbc6ba7cd%3A0xcf2bbe275c6da815!2sA+J+Katzenmaier+Elementary+School!5e0!3m2!1sen!2ses!4v1548165740775"></iframe>
+                        <div v-for="player in giveMeThePlayers(item.name)" class="teamPlayersDiv">
+                            <p>Name: {{player.first_name}} {{player.last_name}}</p>
+                            <p>Postion: {{player.position}}</p>
+                            <p>Jersey number: {{player.jersey_number}}
+                            </p>
+                        </div>
                     </div>
-                    <p></p>
                 </div>
--->
                 <!--
-                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonTwo">
+<div v-for="goals in giveMeTheGoalGetters(item.goal)">
+    <p>{{goals.goal_scorer_name}}</p>
+</div>
+-->
 
-                    Team 3 vs Team 4
+            </div>
+        </div>
+        <!--Signin div-->
+        <div class="signInDiv" v-show="view == 'signIn'" id="signInPage">
+            <img src="StyleSheets/Logo/Premier_League_Logo.svg.png" alt="Premier League" class="PLlogo">
 
-                </button>
-                <div class="card card-body collapse" id="teamButtonTwo" data-parent="#gamePages2">
-                    <h3>Time</h3>
-                    <p>09:30</p>
-                    <h3>location</h3>
-                    <h4>Greenbay Elementary</h4>
-                    <div>
-                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0258843688616!2d-87.64002798455778!3d41.91380227921926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34073f306a3%3A0x9e1726bbf8f23f0e!2s1734+N+Orleans+St%2C+Chicago%2C+IL+60614%2C+EE.+UU.!5e0!3m2!1ses!2ses!4v1548166283858"></iframe>
+            <div>
+                <h2>Sign in</h2>
+                <p>Please use your google login to access the chat messages and join the discussion</p>
+
+
+
+                <button id="login" class="button btn-lg is-info btn loginOut btn-outline-dark" v-on:click="login()">Login!</button>
+
+                <button id="logout" class="button loginOut btn-lg is-info btn btn-outline-dark" v-on:click="logout()">Log Out!</button>
+
+                <hr>
+
+
+                <div class="chat">
+                    <h2>Game discussion</h2>
+                    <div id="posts" class="box">
+                        <p>Please login to view messages</p>
                     </div>
 
+                    <div class="inputs">
 
+
+                        <textarea class="form-control input form-group" rows="5" input id="textInput" type="text" placeholder="Your message..."></textarea>
+
+                        <button id="create-post" class="loginOut button is-primary btn btn-outline-dark" v-on:click="writeNewPost() ">Send</button>
+
+
+                    </div>
+                    <hr>
                 </div>
--->
-                <!--
-                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonThree">
 
-                    Team 1 vs Team 4
 
-                </button>
-                <div class="card card-body collapse" id="teamButtonThree" data-parent="#gamePages2">
-                    <h3>Time</h3>
-                    <p>09:30</p>
-
-                    <h3>location</h3>
-                    <h4>Howard A Yeager Elementary</h4>
-                    <div>
-                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.585683085616!2d-87.66511458455746!3d41.92326457921871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd2e37f9b8d2d%3A0x62ad8b907dd755d6!2s2245+N+Southport+Ave%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1548166354437"></iframe>
+                <div class="chat">
+                    <h2>Football News</h2>
+                    <div id="posts1" class="box">
+                        <p>Please login to view messages</p>
                     </div>
 
+                    <div class="inputs">
+
+
+                        <textarea class="form-control input form-group" rows="5" input id="textInput1" type="text" placeholder="Your message..."></textarea>
+
+
+                        <button id="create-post1" class="loginOut button is-primary btn btn-outline-dark" v-on:click="writeNewPost1()">Send</button>
+
+
+
+                    </div>
                 </div>
--->
-                <!--
-                <button class="btn-secondary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#teamButtonFour">
-                    Team 2 vs Team 3
-                </button>
-                <div class="card card-body collapse" id="teamButtonFour" data-parent="#gamePages2">
-                    <h3>Time</h3>
-                    <p>09:30</p>
 
-                    <h3>location</h3>
-                    <h4><a id="MarjoriePHartElementary">Marjorie P Hart Elementary</a></h4>
-                    <div>
-                        <iframe class="indivMap" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11798.881242377356!2d-87.84569!3d42.3271639!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9a4d5f9aafd42e02!2sMarjorie+P+Hart+Elementary+School!5e0!3m2!1ses!2ses!4v1548166416106"></iframe>
-                    </div>
--->
+
 
 
             </div>
         </div>
 
+        <!--div for contact-->
 
-        <!--    div for teams-->
-        <div class="teamsDiv collapse " id="teamsPage">
+
+        <div class="contactDiv" v-show="view == 'contact'" id="contactPage">
+            <img src="StyleSheets/Logo/Premier_League_Logo.svg.png" alt="Premier League" class="PLlogo">
+
+
+
+            <!--            <div class="col center">-->
+            <h2>Contact</h2>
+            <p>This should just be a plain page with the contact details and a link to the main websight nothing more</p>
+
+            <p>Please email us at
+                <a href="mailto:nysl@chisoccer.org?subject=Hello%20&body=How%20are%20you?">nysl@chisoccer</a> </p>
+
+
+            <p>We will reply to your email as soon as we can.</p>
+
             <div>
-                <h2>The Teams and results tables</h2>
-                <div>
-                    <p>This div should have information about the league and how other teams are doing their results and shit like that!
-                    </p>
-                    <p>You should be able to click on different leagues and see results tables</p>
-                </div>
-                <div class="container">
-
-                    <div class="row">
-                       <div> <h2>Team</h2></div>
-
-                        <div v-for="item in clubs">
-                            <p><button class="btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#gameStats">{{item.name}}</button></p>
-
-                            <div class="collapse" id="gameStats">
-                                <p>Goals Scored</p>
-                                {{item.goals_scored}}
-                                <p>Goals Conceded</p>
-                                {{item.goals_conceded}}
-                                <p>Goal Difference</p>
-                                {{item.goals_difference}}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!--        div for sign_in-->
-
-                <div class="signInDiv collapse" id="signInPage">
-                    <div>
-                        <h2>Sign in</h2>
-                        <p>This shoule be a plain google log in thing that leads you to a different page</p>
-
-
-                    </div>
-                </div>
-
-                <!--div for contact-->
-                <div class="contactDiv collapse" id="contactPage">
-                    <div class="container">
-                        <div class="col center">
-                            <h2>Contact</h2>
-                            <p>This should just be a plain page with the contact details and a link to the main websight nothing more</p>
-
-                            <p>Please email us at
-                                <a href="mailto:nysl@chisoccer.org?subject=Hello%20&body=How%20are%20you?">nysl@chisoccer</a> </p>
-
-
-                            <p>We will reply to your email as soon as we can.</p>
-
-                            <div>
-                                <b>Email:</b><a href="mailto:nysl@chisoccer.org?subject=Hello%20Michael&body=How%20are%20you?">michael.randall@chisoccer.org</a>
-                                <p> <a href="tel://+16306908132">Phone: (630) 690-8132</a></p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
+                <b>Email:</b><a href="mailto:nysl@chisoccer.org?subject=Hello%20Michael&body=How%20are%20you?">michael.randall@chisoccer.org</a>
+                <p> <a href="tel://+16306908132">Phone: (630) 690-8132</a></p>
             </div>
+            <p>Visit our main site <a href="https://www.premierleague.com/">here</a></p>
 
-
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-            <script src="https://apis.google.com/js/platform.js" async defer></script>
-            <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-
-
-            <script src="https://unpkg.com/vue/dist/vue.js"></script>
-            <script src="/JavaScript/javaScript.js"></script>
-            <script src="/JavaScript/tableJson.js"></script>
+            <!--            </div>    -->
+        </div>
 
 
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-                    // // The Firebase SDK is initialized and available here!
-                    //
-                    // firebase.auth().onAuthStateChanged(user => { });
-                    // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-                    // firebase.messaging().requestPermission().then(() => { });
-                    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-                    //
-                    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    </div>
 
-                    try {
-                        let app = firebase.app();
-                        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-                        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-                    } catch (e) {
-                        console.error(e);
-                        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-                    }
-                });
 
-            </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+
+    <script src="JavaScript/theJason.js"></script>
+    <script src="JavaScript/tableJson.js"></script>
+
+
+
+
+
+
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+            // // The Firebase SDK is initialized and available here!
+            //
+            // firebase.auth().onAuthStateChanged(user => { });
+            // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+            // firebase.messaging().requestPermission().then(() => { });
+            // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+            //
+            // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+            try {
+                let app = firebase.app();
+                let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+                document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+            } catch (e) {
+                console.error(e);
+                document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+            }
+        });
+    </script>
+
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCW1N_9T1VQdz6JmNJNwrNzpyE6Yzg-TJw",
+            authDomain: "footballwebapp-a08e7.firebaseapp.com",
+            databaseURL: "https://footballwebapp-a08e7.firebaseio.com",
+            projectId: "NE9bmIzBNG2mQznnR33m",
+            storageBucket: "footballwebapp-a08e7.appspot.com",
+            messagingSenderId: "1008527950356"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+
+
+
+
+
 </body>
 
 </html>
